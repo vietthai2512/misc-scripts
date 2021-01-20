@@ -33,11 +33,17 @@ function equivalents(_GPA)
 
 let rows = document.getElementsByClassName('dxgvDataRow');
 
-console.log(rows);
+let totalCredits = 0;
+let totalGrade = 0;
 
 for (const row of rows)
 {
     if (row.children[4].textContent === 'F')
         continue;
-    console.log(row.children[4].textContent);
+
+    let credits = parseInt(row.children[3].textContent)
+    totalCredits += credits;
+    totalGrade += grading.get(row.children[4].textContent) * credits;
 }
+
+console.log(totalGrade / totalCredits);
